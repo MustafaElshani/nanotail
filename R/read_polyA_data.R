@@ -31,7 +31,7 @@ read_polya_single <- function(polya_path, gencode = TRUE, sample_name = NA) {
 
     #integer64 set to "numeric" to avoid inconsistences when called from read_polya_multiple
     polya_data <- data.table::fread(polya_path, integer64 = "numeric", data.table = F,header=TRUE,stringsAsFactors = FALSE,check.names = TRUE,showProgress = FALSE) %>% dplyr::as_tibble()
-    polya_data <- polya_data %>% dplyr::mutate(polya_length = round(polya_length),dwell_time=transcript_start-polya_start)
+    polya_data <- polya_data %>% dplyr::mutate(polya_length = round(polya_length))
     # change first column name
     colnames(polya_data)[1] <- "read_id"
     # transcript names, if mapping to gencode transcriptome
